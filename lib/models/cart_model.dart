@@ -14,11 +14,24 @@ class CartItem {
   });
 }
 
-class CartProvider with ChangeNotifier {
+class CartModel with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
-    return {...items};
+    return {..._items};
+  }
+
+  int get itemsCount {
+    return _items.length;
+  }
+
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, value) {
+      total += value.price * value.quantity;
+    });
+
+    return total;
   }
 
   void addItem(String productId, double price, String title) {
@@ -43,5 +56,16 @@ class CartProvider with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
+  }
+
+  void removeItem(String id) {
+    _items.remove(id);
+    notifyListeners();
+  }
+
+  void clearCart() {
+    _items = {};
+    notifyListeners();
   }
 }

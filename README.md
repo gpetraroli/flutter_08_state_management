@@ -1,16 +1,7 @@
-# flutter_s_08_state_management
+# Flutter state management
 
-A new Flutter project.
+There are various packages to manage global/shared data; one of the most used and recommended by the
+flutter documentation is [Provider](https://pub.dev/packages/provider).
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Simple app state management by flutter](https://docs.flutter.dev/development/data-and-backend/state-mgmt/simple)
+.
