@@ -50,7 +50,7 @@ class ProductsModel with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  addProduct(ProductModel product) {
+  void addProduct(ProductModel product) {
     final newProduct = ProductModel(
       id: DateTime.now().toString(),
       title: product.title,
@@ -59,6 +59,18 @@ class ProductsModel with ChangeNotifier {
       imageUrl: product.imageUrl,
     );
     _items.add(newProduct);
+    notifyListeners();
+  }
+
+  void updateProduct(String id, ProductModel newProduct) {
+    final productIndex = _items.indexWhere((element) => element.id == id);
+
+    _items[productIndex] = newProduct;
+    notifyListeners();
+  }
+
+  void deleteProduct(String id) {
+    _items.removeWhere((element) => element.id == id);
     notifyListeners();
   }
 }
