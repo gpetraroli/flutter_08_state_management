@@ -52,7 +52,7 @@ class ProductsModel with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  void addProduct(ProductModel product) {
+  addProduct(ProductModel product) {
     final url = Uri.parse(
         'https://tmpdart-default-rtdb.europe-west1.firebasedatabase.app/products');
 
@@ -66,7 +66,19 @@ class ProductsModel with ChangeNotifier {
         'isFavorite': product.isFavorite,
       }),
     );
+    final url = Uri.parse(
+        'https://tmpdart-default-rtdb.europe-west1.firebasedatabase.app/products');
 
+    http.post(
+      url,
+      body: json.encode({
+        'title': product.title,
+        'description': product.description,
+        'imageUrl': product.imageUrl,
+        'price': product.price,
+        'isFavorite': product.isFavorite,
+      }),
+    );
     final newProduct = ProductModel(
       id: DateTime.now().toString(),
       title: product.title,
